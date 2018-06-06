@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test</title>
+</head>
+<body>
+    <div  id='content'>
+       <h1>this is a client page!</h1><hr>
+    </div>
+    <script>
+        window.onload = function(){
+            const  content = document.getElementById('content');
+
+            const xhr = new XMLHttpRequest();
+            xhr.withCredentials = true;
+            xhr.onload = function(){
+                if(xhr.readyState == 4) {
+                    if(xhr.status >= 200 && xhr.status <300 || xhr.status == 304) {
+                        content.innerHTML = 'Reuqest was success:' + xhr.responseText;
+                        console.log('Request was success:', xhr.responseText);
+                    }else {
+                        content.innerHTML = 'Reuqest was failed:' + xhr.status;
+                        console.log("Request was failed:", xhr.status); 
+                    }
+                }
+            }
+            // xhr.open('get', 'http://localhost:3000/client.html', true); //不跨域
+            xhr.open('get', 'http://localhost:3333', true); //跨域
+
+            xhr.send();
+        }
+
+    
+        
+
+    </script>
+</body>
+</html>
