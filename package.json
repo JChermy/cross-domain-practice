@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.3",
+    "httpdispatcher": "^2.1.2",
     "request": "^2.87.0"
   }
 }

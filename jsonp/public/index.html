@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>index</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+</head>
+<body>
+    <button id='getData'>跨域获取数据</button>
+    <div id='content'>
+        姓名：<span class="name"></span><br/>
+        公司：<span class="company"></span>
+    </div>
+    <script>
+        const btn = document.getElementById('getData');
+        const container = document.getElementById('content');
+        btn.addEventListener('click', function(){
+            $.getJSON('http://localhost:1112/getPerson?callback=?', function(data) {
+                $('.name').html(data.name);
+                $('.company').html(data.company);
+            })
+        }, false);
+    </script>
+</body>
+</html>
