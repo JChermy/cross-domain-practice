@@ -17,9 +17,14 @@
         const btn = document.getElementById('getData');
         const container = document.getElementById('content');
         btn.addEventListener('click', function(){
-            $.getJSON('http://localhost:1112/getPerson?callback=?', function(data) {
-                $('.name').html(data.name);
-                $('.company').html(data.company);
+            $.ajax({
+                url: 'http://localhost:1112/getPerson?callback=?',
+                dataType: 'jsonp',
+                jsonpCallback: 'person',
+                success: function(data){
+                    $('.name').html(data.name);
+                    $('.company').html(data.company);
+                }
             })
         }, false);
     </script>
