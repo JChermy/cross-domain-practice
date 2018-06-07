@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>index</title>
+</head>
+<body>
+    <script>
+          const proxy = function(url ,callback) {
+                let status = 0;
+                const iframe = document.createElement('iframe');
+
+                iframe.src = url;
+
+                iframe.onload = function(){
+                    if(status === 1) {
+                        callback(iframe.contentWindow.name);
+                        destoryFrame();
+                    } else if (status === 0) {
+                        iframe.contentWindow.location = 'http://localhost:4444/proxy.html';
+                        status = 1;
+                    }
+                }
+
+                document.body.appendChild(iframe);
+          };
+         
+
+          function destoryFrame() {
+              iframe.contentWindow.document.write('');
+              iframe.contentWindow.close();
+              document.body.removeChild(iframe);
+          }
+
+          proxy('http://localhost:3333/iframe.html', function(data) {
+              alert(data);
+          })
+    </script>
+
+</body>
+</html>
