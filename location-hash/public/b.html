@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>b</title>
+    <iframe id="iframe"  src="http://localhost:3333/c.html" style="display:none;"></iframe>
+</head>
+<body>
+    <script>
+        const iframe = document.getElementById('iframe');
+
+        // 监听a.html传来的hash值，再传给c.html
+        window.onhashchange = function(){
+            iframe.src = iframe.src + location.hash;
+        }
+    </script>
+</body>
+</html>

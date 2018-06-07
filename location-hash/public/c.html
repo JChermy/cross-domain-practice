@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>c</title>
+</head>
+<body>
+    <script>
+        // 监听b.html传来的hash值
+        window.onhashchange = function(){
+            // 再通过操作同域a.html的js回调，将结果传回
+            window.parent.parent.onCallback('hello '+ location.hash.replace('#user=', ''));
+        };
+    </script>
+</body>
+</html>
