@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>a</title>
+    <iframe id="iframe" src="http://localhost:4444/b.html" style="display:none;"></iframe>
+</head>
+<body>
+    <script>
+        const iframe = document.getElementById('iframe');
+        iframe.onload = function() {
+            const data = {
+                name : 'Jchermy'
+            };
+
+            //向http://localhost:4444 发送跨域数据
+            iframe.contentWindow.postMessage(JSON.stringify(data), "http://localhost:4444");
+        };
+
+        //接受 localhost:4444 返回的数据
+        window.addEventListener('message', function(e){
+            alert('data from b.html ----->' + e.data);
+        },false);
+    </script>
+</body>
+</html>

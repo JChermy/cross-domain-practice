@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>b</title>
+</head>
+<body>
+    <script>
+        window.addEventListener('message', function(e){
+            alert('data from a.html ---->' + e.data);
+
+            const data = JSON.parse(e.data);
+            if(data) {
+                data.age = 18;
+
+                //处理后再返回给 localhost:3333
+                window.parent.postMessage(JSON.stringify(data), "http://localhost:3333");
+            }
+        }, false);
+    </script>
+</body>
+</html>
