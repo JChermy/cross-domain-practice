@@ -4,6 +4,6 @@
 2.jsonp \<br>
 3.window.name+iframe \<br> 
 4.location.hash+iframe \<br>
-5.HTML5 postMessage
-
+5.HTML5 postMessage \<br>
+6.nginx 反向代理 \<br>
 具体教程见 https://segmentfault.com/u/jiucheng_
