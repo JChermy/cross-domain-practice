@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>index</title>
+</head>
+<body>
+    <div>用户输入: <input type="text"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+    <script>
+        window.onload = function(){
+            var socket = io('http://localhost:5555');
+
+            //连接成功处理
+            socket.on('connect', function(){
+                console.log('Server socket has established');
+            });
+
+            socket.on('disconnect', function() {
+                console.log('Server sockect has closed');
+            });
+
+            //监听服务端消息
+            socket.on('message', function(msg) {
+                console.log('data from server ---->' +msg);
+            } )
+
+            document.getElementsByTagName('input')[0].onblur = function() {
+                socket.send(this.value);
+            };
+        }
+    </script>
+</body>
+</html>

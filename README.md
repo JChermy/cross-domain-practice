@@ -7,4 +7,5 @@
 5.HTML5 postMessage </br>
 6.nginx 反向代理 </br>
 7.node.js + express + http-proxy-middleware<br/>
+8.webSocket<br/>
 具体教程见 https://segmentfault.com/u/jiucheng_
