@@ -3,15 +3,14 @@ const server = http.createServer();
 const qs = require('querystring');
 
 server.on('request', function(req, res) {
-    const params = qs.parse(req.url.substring(2));
+    const query = require('url').parse(req.url, true).query;
 
     //向前台写cookie
     res.writeHead(200, {
         'Set-Cookie' : 'name=jchermy;Path:/;Domain:localhost;Httponly' //HttpOnly 脚本无法读取
     });
    
-    res.write("I come from localhost:9999");
-    //res.write(JSON.stringify(params));
+    res.write(JSON.stringify('Hi! '+query.user));
     res.end();
 })
 
